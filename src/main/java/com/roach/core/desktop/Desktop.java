@@ -336,10 +336,14 @@ public class Desktop extends Application {
         //监听窗口移动后事件
         mainView.setOnMouseMoved((MouseEvent event) -> {
             event.consume();
-            double tx = event.getSceneX();//记录x数据
-            double ty = event.getSceneY();//记录y数据
-            double tw = winStage.getWidth();//记录width数据
-            double th = winStage.getHeight();//记录height数据
+            //记录x数据
+            double tx = event.getSceneX();
+            //记录y数据
+            double ty = event.getSceneY();
+            //记录width数据
+            double tw = winStage.getWidth();
+            //记录height数据
+            double th = winStage.getHeight();
             //光标初始为默认类型，若未进入调整窗口状态则保持默认类型
             Cursor cursorType = Cursor.DEFAULT;
             //将所有调整窗口状态重置
