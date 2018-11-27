@@ -188,6 +188,14 @@
                         <jnlp.includeDT>true</jnlp.includeDT>
                         <jnlp.outfile>roach</jnlp.outfile>
                     </bundleArguments>
+                    <keyPassword>123456</keyPassword>
+                    <keyStorePassword>123456</keyStorePassword>
+                    <keyStoreAlias>client</keyStoreAlias>
+                    <certDomain>sz</certDomain>
+                    <certCountry>cn</certCountry>
+                    <certState>gd</certState>
+                    <certOrg>vivo</certOrg>
+                    <certOrgUnit>h5</certOrgUnit>
                     <!--供应商-->
                     <vendor>jdktomcat</vendor>
                     <!--允许所有权限-->
