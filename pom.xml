@@ -185,6 +185,8 @@
                     <!--安装配置项-->
                     <bundleArguments>
                         <installdirChooser>true</installdirChooser>
+                        <jnlp.includeDT>true</jnlp.includeDT>
+                        <jnlp.outfile>roach</jnlp.outfile>
                     </bundleArguments>
                     <!--供应商-->
                     <vendor>jdktomcat</vendor>
@@ -196,6 +198,7 @@
                     <description>
                         roach是为Redis可视化管理开发的一款开源免费的桌面客户端软件
                     </description>
+
                 </configuration>
             </plugin>
         </plugins>
