@@ -307,7 +307,7 @@ public class RedisUtil {
      * 备份数据
      */
     public static String backupKey(Jedis jedis, int index, String pattern) {
-        StringBuffer dataBuffer = new StringBuffer("");
+        StringBuffer dataBuffer = new StringBuffer();
         long startTime = System.currentTimeMillis();
         jedis.select(index);
         if (StringUtils.isEmpty(pattern)) {
