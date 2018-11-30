@@ -247,7 +247,7 @@ function backupData() {
 }
 
 //还原数据
-function recoveData() {
+function recoveryData() {
     if (currNode2 == null) {
         layer.msg("请选择一个要操作的库！");
         return false;
@@ -260,6 +260,23 @@ function recoveData() {
     initDbTree();
 }
 
+//刷新数据
+function refreshData(){
+    var data = JSON.parse(dataSinglesRouter.treeInit());
+    if (data.code === 200) {
+        for (var i = 0; i < data.data.length; i++) {
+            $("#db-tree").append('<ul id="keyTree' + i + '" name="keyTree' + i + '" class="ztree"></ul>');
+            $.fn.zTree.init($("#keyTree" + i), zTreeSetting, data.data[i]);
+            $.fn.zTree.getZTreeObj("keyTree" + i).expandAll(true);
+        }
+    } else {
+        layer.alert(data.msgs, {
+            skin: 'layui-layer-lan',
+            closeBtn: 0
+        });
+    }
+    hideZtreeMenu();
+}
 
 //高亮显示当前选中树
 function checkedOnTree(index) {

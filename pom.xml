@@ -157,7 +157,7 @@
                     <!--JVM参数-->
                     <jvmArgs>
                         <jvmArg>-Xms100m</jvmArg>
-                        <jvmArg>-Xmx200m</jvmArg>
+                        <jvmArg>-Xmx500m</jvmArg>
                         <jvmArg>-Dfile.encoding=UTF-8</jvmArg>
                         <jvmArg>-XX:-UseGCOverheadLimit</jvmArg>
                         <jvmArg>-Dsun.jnu.encoding=UTF-8</jvmArg>
@@ -167,7 +167,7 @@
                     <!--JVM启动参数-->
                     <launcherArguments>
                         <launcherArgument>-Xms100m</launcherArgument>
-                        <launcherArgument>-Xmx200m</launcherArgument>
+                        <launcherArgument>-Xmx500m</launcherArgument>
                         <launcherArgument>-Dfile.encoding=UTF-8</launcherArgument>
                         <launcherArgument>-XX:-UseGCOverheadLimit</launcherArgument>
                         <launcherArgument>-Dsun.jnu.encoding=UTF-8</launcherArgument>

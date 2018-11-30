@@ -65,6 +65,23 @@ layui.use(['jquery', 'form', 'layer'], function () {
                 closeBtn: 0
             });
         }
+        // 刷新树形菜单
+        layer.load(2);
+        var data = JSON.parse(dataSinglesRouter.treeInit());
+        layer.closeAll('loading');
+        if (data.code === 200) {
+            for (var i = 0; i < data.data.length; i++) {
+                $("#db-tree").append('<ul id="keyTree' + i + '" name="keyTree' + i + '" class="ztree"></ul>');
+                $.fn.zTree.init($("#keyTree" + i), zTreeSetting, data.data[i]);
+                $.fn.zTree.getZTreeObj("keyTree" + i).expandAll(false);
+            }
+            checkedOnTree(0);
+        } else {
+            layer.alert(data.msgs, {
+                skin: 'layui-layer-lan',
+                closeBtn: 0
+            });
+        }
         return false;
     });
 
