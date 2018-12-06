@@ -36,9 +36,9 @@ public class Connect {
     private String type;
 
     /**
-     * 连接名
+     * ssh用户名
      */
-    private String connName;
+    private String sshName;
 
     /**
      * 主机常连接地址

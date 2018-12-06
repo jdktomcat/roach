@@ -49,16 +49,7 @@ public class ConnectController {
         try {
             JSONObject data = JSON.parseObject(json);
             Connect connect = new Connect();
-            connect.setText(data.getString("text"));
-            connect.setType(data.getString("type"));
-            connect.setMode(data.getString("isha"));
-            connect.setRedisHost(data.getString("rhost"));
-            connect.setRedisPort(data.getString("rport"));
-            connect.setRedisPass(data.getString("rpass"));
-            connect.setSshHost(data.getString("shost"));
-            connect.setSshPort(data.getString("sport"));
-            connect.setConnName(data.getString("sname"));
-            connect.setSshPass(data.getString("spass"));
+            JsonUtil.copyConnPropertyJson(data, connect);
             int insFlag = this.dataService.insertConnect(connect);
             if (insFlag == 1) {
                 return getOkByJson("新增连接成功");
@@ -78,16 +69,7 @@ public class ConnectController {
             JSONObject data = JSON.parseObject(json);
             Connect connect = new Connect();
             connect.setId(data.getString("id"));
-            connect.setText(data.getString("text"));
-            connect.setType(data.getString("type"));
-            connect.setMode(data.getString("isha"));
-            connect.setRedisHost(data.getString("rhost"));
-            connect.setRedisPort(data.getString("rport"));
-            connect.setRedisPass(data.getString("rpass"));
-            connect.setSshHost(data.getString("shost"));
-            connect.setSshPort(data.getString("sport"));
-            connect.setConnName(data.getString("sname"));
-            connect.setSshPass(data.getString("spass"));
+            JsonUtil.copyConnPropertyJson(data, connect);
             int updFlag = this.dataService.updateConnect(connect);
             if (updFlag == 1) {
                 return getOkByJson("修改连接成功");

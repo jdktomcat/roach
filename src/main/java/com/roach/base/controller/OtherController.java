@@ -35,34 +35,34 @@ public class OtherController {
                 pageUrl = PAGE_CONNECT;
                 break;
             case 2:
-                if (connect.getIsha().equals("0")) {
+                if (connect.getMode().equals("0")) {
                     pageUrl = PAGE_DATA_SINGLES;
                 }
-                if (connect.getIsha().equals("1")) {
+                if (connect.getMode().equals("1")) {
                     pageUrl = PAGE_DATA_CLUSTER;
                 }
                 break;
             case 3:
-                if (connect.getIsha().equals("0")) {
+                if (connect.getMode().equals("0")) {
                     pageUrl = PAGE_INFO_SINGLES;
                 }
-                if (connect.getIsha().equals("1")) {
+                if (connect.getMode().equals("1")) {
                     pageUrl = PAGE_INFO_CLUSTER;
                 }
                 break;
             case 4:
-                if (connect.getIsha().equals("0")) {
+                if (connect.getMode().equals("0")) {
                     pageUrl = PAGE_CONF_SINGLES;
                 }
-                if (connect.getIsha().equals("1")) {
+                if (connect.getMode().equals("1")) {
                     pageUrl = PAGE_CONF_CLUSTER;
                 }
                 break;
             case 5:
-                if (connect.getIsha().equals("0")) {
+                if (connect.getMode().equals("0")) {
                     pageUrl = PAGE_MONITOR_SINGLES;
                 }
-                if (connect.getIsha().equals("1")) {
+                if (connect.getMode().equals("1")) {
                     pageUrl = PAGE_MONITOR_CLUSTER;
                 }
                 break;

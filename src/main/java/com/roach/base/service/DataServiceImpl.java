@@ -59,7 +59,7 @@ public class DataServiceImpl implements DataService {
         connect.setSshPrivateKey("");
         connect.setTime(DateUtil.formatDateTime(new Date()));
         if ("0".equals(connect.getType())) {
-            connect.setConnName("--");
+            connect.setSshName("--");
         } else {
             connect.setRedisHost("127.0.0.1");
         }

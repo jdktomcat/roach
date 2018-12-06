@@ -19,13 +19,13 @@ public class JschUtil {
 
     public static void openSSH(Connect connect) throws Exception {
         closeSSH();
-        session = new JSch().getSession(connect.getSname(), connect.getShost(), Integer.valueOf(connect.getSport()));
-        session.setPassword(connect.getSpass());
+        session = new JSch().getSession(connect.getSshName(), connect.getSshHost(), Integer.valueOf(connect.getSshPort()));
+        session.setPassword(connect.getSshPass());
         session.setConfig("StrictHostKeyChecking", "no");
         session.connect();
         log.info("已使用SSH通道，SSH服务器版本：" + session.getServerVersion());
-        int aport = session.setPortForwardingL(55555, connect.getShost(), Integer.valueOf(connect.getRport()));
-        log.info(connect.getRhost() + ":" + aport + " -> " + connect.getShost() + ":" + connect.getSport());
+        int aport = session.setPortForwardingL(55555, connect.getSshHost(), Integer.valueOf(connect.getSshPort()));
+        log.info(connect.getRedisHost() + ":" + aport + " -> " + connect.getSshHost() + ":" + connect.getSshPort());
     }
 
     private static void closeSSH() {

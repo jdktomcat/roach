@@ -76,14 +76,14 @@ public class RedisUtil {
         config.setMaxWaitMillis(MAX_WAIT);
         config.setTestOnBorrow(TEST_ON_BORROW);
         config.setTestOnReturn(TEST_ON_RETURN);
-        Integer port = Integer.valueOf(connect.getRport());
+        Integer port = Integer.valueOf(connect.getRedisPort());
         if ("1".equals(connect.getType())) {
             port = 55555;
         }
-        if (StringUtils.isEmpty(connect.getRpass())) {
-            jedisPool = new JedisPool(config, connect.getRhost(), port, TIME_OUT);
+        if (StringUtils.isEmpty(connect.getRedisPass())) {
+            jedisPool = new JedisPool(config, connect.getRedisHost(), port, TIME_OUT);
         } else {
-            jedisPool = new JedisPool(config, connect.getRhost(), port, TIME_OUT, connect.getRpass());
+            jedisPool = new JedisPool(config, connect.getRedisHost(), port, TIME_OUT, connect.getRedisPass());
         }
     }
 
@@ -920,9 +920,9 @@ public class RedisUtil {
 
     public static void main(String[] args) {
         Connect connect = new Connect();
-        connect.setRhost("127.0.0.1");
-        connect.setRport("6379");
-        connect.setRpass("123456789");
+        connect.setRedisHost("127.0.0.1");
+        connect.setRedisPort("6379");
+        connect.setRedisPass("123456789");
         connect.setType("0");
         Jedis jedis = openJedis(connect);
         List<String> list = new ArrayList<>();

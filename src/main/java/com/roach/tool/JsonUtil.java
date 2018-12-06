@@ -1,6 +1,8 @@
 package com.roach.tool;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.roach.base.bean.Connect;
 import com.roach.base.bean.KeyBean;
 
 import java.util.regex.Matcher;
@@ -12,6 +14,8 @@ import java.util.regex.Pattern;
  * @author jdktomcat
  */
 public class JsonUtil {
+
+    private static final Pattern pattern = Pattern.compile("\\p{C}");
 
     public static KeyBean parseKeyBeanObject(String json) {
         try {
@@ -51,8 +55,7 @@ public class JsonUtil {
 
 
     public static String getUnicodeToString(String str) {
-        Pattern p = Pattern.compile("\\p{C}");
-        Matcher m = p.matcher(str);
+        Matcher m = pattern.matcher(str);
         while (m.find()) {
             str = str.replace(m.group(), stringToUnicode(m.group()));
         }
@@ -61,12 +64,30 @@ public class JsonUtil {
 
 
     public static String getStringToUnicode(String str) {
-        Pattern p = Pattern.compile("\\p{C}");
-        Matcher m = p.matcher(str);
+        Matcher m = pattern.matcher(str);
         while (m.find()) {
             str = str.replace(m.group(), unicodeToString(m.group()));
         }
         return str;
+    }
+
+    /**
+     * 将JSON中信息转化到Connect对象属性中
+     *
+     * @param data    JSON数据
+     * @param connect 连接信息
+     */
+    public static void copyConnPropertyJson(JSONObject data, Connect connect) {
+        connect.setText(data.getString("text"));
+        connect.setType(data.getString("type"));
+        connect.setMode(data.getString("isha"));
+        connect.setRedisHost(data.getString("rhost"));
+        connect.setRedisPort(data.getString("rport"));
+        connect.setRedisPass(data.getString("rpass"));
+        connect.setSshHost(data.getString("shost"));
+        connect.setSshPort(data.getString("sport"));
+        connect.setSshName(data.getString("sname"));
+        connect.setSshPass(data.getString("spass"));
     }
 
     public static void main(String[] args) throws Exception {
