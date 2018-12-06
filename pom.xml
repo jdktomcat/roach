@@ -130,6 +130,12 @@
             <version>0.1.54</version>
         </dependency>
 
+        <!-- 调试 -->
+        <dependency>
+            <groupId>com.mohamnag</groupId>
+            <artifactId>javafx-webview-debugger</artifactId>
+            <version>0.0.1</version>
+        </dependency>
     </dependencies>
 
 

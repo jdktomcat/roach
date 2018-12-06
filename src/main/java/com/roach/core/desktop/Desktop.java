@@ -1,5 +1,6 @@
 package com.roach.core.desktop;
 
+import com.mohamnag.fxwebview_debugger.DevToolsDebuggerServer;
 import com.roach.MainApplication;
 import com.roach.base.controller.*;
 import com.roach.tool.FileUtil;
@@ -252,6 +253,11 @@ public class Desktop extends Application {
             System.out.println("Console: [" + sourceId + ":" + lineNumber + "] " + message);
         });
 
+        try{
+            DevToolsDebuggerServer.startDebugServer(webEngine.impl_getDebugger(), 51742);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
         return webView;
     }
 

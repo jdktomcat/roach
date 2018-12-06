@@ -1,8 +1,8 @@
 /*使用自定义字体*/
-@font-face {
-    font-family: 'redisplus';
-    src: url('../font/redisplus.ttf') format('truetype');
-}
+/*@font-face {*/
+    /*font-family: 'redisplus';*/
+    /*src: url('../font/redisplus.ttf') format('truetype');*/
+/*}*/
 
 /*定义滚动条样式*/
 ::-webkit-scrollbar {
@@ -59,7 +59,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Microsoft YaHei UI Light';
+    font-family: 'Microsoft YaHei UI';
 }
 
 .root {
