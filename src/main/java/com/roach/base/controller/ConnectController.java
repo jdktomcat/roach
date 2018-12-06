@@ -237,7 +237,7 @@ public class ConnectController {
     public String backupConnect() {
         try {
             String baseUrl = System.getProperty("user.home");
-            String fileName = "redisplus-connect-" + DateUtil.formatDate(new Date(), DateUtil.DATE_STR_FILE) + ".bak";
+            String fileName = "roach-connect-" + DateUtil.formatDate(new Date(), DateUtil.DATE_STR_FILE) + ".bak";
             String filePath = baseUrl + "/" + fileName;
             List<Connect> connectList = this.dataService.selectConnect();
             if (null == connectList || connectList.isEmpty()) {

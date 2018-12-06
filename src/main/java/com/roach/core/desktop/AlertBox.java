@@ -33,7 +33,7 @@ public class AlertBox {
 
     public void display(String title) {
         Stage window = new Stage();
-        window.setTitle("RedisPlus");
+        window.setTitle("roach");
         window.initStyle(StageStyle.TRANSPARENT);
         window.initModality(Modality.APPLICATION_MODAL);
         window.setScene(new Scene(getMainBox(window, title), 600, 600));
