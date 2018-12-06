@@ -55,13 +55,13 @@ public class DataServiceImpl implements DataService {
     }
 
     private void defaultConnectSetting(Connect connect) {
-        connect.setOnssl("0");
-        connect.setSpkey("");
+        connect.setOnSsl("0");
+        connect.setSshPrivateKey("");
         connect.setTime(DateUtil.formatDateTime(new Date()));
         if ("0".equals(connect.getType())) {
-            connect.setSname("--");
+            connect.setConnName("--");
         } else {
-            connect.setRhost("127.0.0.1");
+            connect.setRedisHost("127.0.0.1");
         }
     }
 

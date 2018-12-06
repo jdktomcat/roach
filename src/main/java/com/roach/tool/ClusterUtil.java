@@ -64,7 +64,7 @@ public class ClusterUtil {
             String port = StringUtil.getValueString(FLAG_COLON, node.getAddr());
             nodes.add(new HostAndPort(host, Integer.valueOf(port)));
         }
-        String pass = connect.getRpass();
+        String pass = connect.getRedisPass();
         if (StringUtils.isEmpty(pass)) {
             cluster = new JedisCluster(nodes, TIME_OUT, config);
         } else {
@@ -97,12 +97,12 @@ public class ClusterUtil {
         List<RedisNode> nodeList = new ArrayList<>();
         Jedis jedis = null;
         if ("1".equals(connect.getType())) {
-            jedis = new Jedis(connect.getRhost(), 55555);
+            jedis = new Jedis(connect.getRedisPort(), 55555);
         } else {
-            jedis = new Jedis(connect.getRhost(), Integer.valueOf(connect.getRport()));
+            jedis = new Jedis(connect.getRedisHost(), Integer.valueOf(connect.getRedisPort()));
         }
-        if (!StringUtils.isEmpty(connect.getRpass())) {
-            jedis.auth(connect.getRpass());
+        if (!StringUtils.isEmpty(connect.getRedisPass())) {
+            jedis.auth(connect.getRedisPass());
         }
         String clusterNodes = jedis.clusterNodes();
         String[] nodes = clusterNodes.split("\n");
@@ -146,10 +146,10 @@ public class ClusterUtil {
             Connect connect = getCurrentOpenConnect();
             Map<String, JedisPool> clusterNodes = jedisCluster.getClusterNodes();
             for (String nk : clusterNodes.keySet()) {
-                if (connect.getType().equals("0") && nk.contains(connect.getRhost())) {
+                if (connect.getType().equals("0") && nk.contains(connect.getRedisHost())) {
                     return clusterNodes.get(nk).getResource();
                 }
-                if (connect.getType().equals("1") && nk.contains(connect.getShost())) {
+                if (connect.getType().equals("1") && nk.contains(connect.getRedisHost())) {
                     return clusterNodes.get(nk).getResource();
                 }
             }
@@ -162,12 +162,12 @@ public class ClusterUtil {
         boolean isCulter = false;
         Jedis jedis = null;
         try {
-            String pass = connect.getRpass();
+            String pass = connect.getRedisPass();
             if ("1".equals(connect.getType())) {
                 JschUtil.openSSH(connect);
-                jedis = new Jedis(connect.getRhost(), 55555);
+                jedis = new Jedis(connect.getRedisHost(), 55555);
             } else {
-                jedis = new Jedis(connect.getRhost(), Integer.valueOf(connect.getRport()));
+                jedis = new Jedis(connect.getRedisHost(), Integer.valueOf(connect.getRedisPort()));
             }
             if (!StringUtils.isEmpty(pass)) {
                 jedis.auth(pass);
@@ -559,8 +559,8 @@ public class ClusterUtil {
 
     public static void main(String[] args) throws Exception {
         Connect connect = new Connect();
-        connect.setRport("7001");
-        connect.setRhost("127.0.0.1");
+        connect.setRedisPort("7001");
+        connect.setRedisHost("127.0.0.1");
         connect.setType("0");
         openCluster(connect);
         testClusterData();

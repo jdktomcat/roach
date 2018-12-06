@@ -26,9 +26,9 @@ public class Connect {
     private String time;
 
     /**
-     * 是否集群：0单机，1集群
+     * 模式：0-单机 1-集群 2-哨兵
      */
-    private String isha;
+    private String mode;
 
     /**
      * 类型：0默认，1：ssh
@@ -38,46 +38,46 @@ public class Connect {
     /**
      * 连接名
      */
-    private String sname;
+    private String connName;
 
     /**
-     * 主机
+     * 主机常连接地址
      */
-    private String rhost;
+    private String redisHost;
 
     /**
-     * 主机
+     * 主机SSH连接地址
      */
-    private String shost;
+    private String sshHost;
 
     /**
      * redis端口
      */
-    private String rport;
+    private String redisPort;
 
     /**
      * ssh端口
      */
-    private String sport;
+    private String sshPort;
 
     /**
      * redis密码
      */
-    private String rpass;
+    private String redisPass;
 
     /**
      * ssh密码
      */
-    private String spass;
+    private String sshPass;
 
     /**
      * ssh登录私钥
      */
-    private String spkey;
+    private String sshPrivateKey;
 
     /**
      * 是否启用ssl
      */
-    private String onssl;
+    private String onSsl;
 
 }

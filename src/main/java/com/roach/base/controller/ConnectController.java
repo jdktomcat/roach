@@ -51,14 +51,14 @@ public class ConnectController {
             Connect connect = new Connect();
             connect.setText(data.getString("text"));
             connect.setType(data.getString("type"));
-            connect.setIsha(data.getString("isha"));
-            connect.setRhost(data.getString("rhost"));
-            connect.setRport(data.getString("rport"));
-            connect.setRpass(data.getString("rpass"));
-            connect.setShost(data.getString("shost"));
-            connect.setSport(data.getString("sport"));
-            connect.setSpass(data.getString("sname"));
-            connect.setSpass(data.getString("spass"));
+            connect.setMode(data.getString("isha"));
+            connect.setRedisHost(data.getString("rhost"));
+            connect.setRedisPort(data.getString("rport"));
+            connect.setRedisPass(data.getString("rpass"));
+            connect.setSshHost(data.getString("shost"));
+            connect.setSshPort(data.getString("sport"));
+            connect.setConnName(data.getString("sname"));
+            connect.setSshPass(data.getString("spass"));
             int insFlag = this.dataService.insertConnect(connect);
             if (insFlag == 1) {
                 return getOkByJson("新增连接成功");
@@ -80,14 +80,14 @@ public class ConnectController {
             connect.setId(data.getString("id"));
             connect.setText(data.getString("text"));
             connect.setType(data.getString("type"));
-            connect.setIsha(data.getString("isha"));
-            connect.setRhost(data.getString("rhost"));
-            connect.setRport(data.getString("rport"));
-            connect.setRpass(data.getString("rpass"));
-            connect.setShost(data.getString("shost"));
-            connect.setSport(data.getString("sport"));
-            connect.setSpass(data.getString("sname"));
-            connect.setSpass(data.getString("spass"));
+            connect.setMode(data.getString("isha"));
+            connect.setRedisHost(data.getString("rhost"));
+            connect.setRedisPort(data.getString("rport"));
+            connect.setRedisPass(data.getString("rpass"));
+            connect.setSshHost(data.getString("shost"));
+            connect.setSshPort(data.getString("sport"));
+            connect.setConnName(data.getString("sname"));
+            connect.setSshPass(data.getString("spass"));
             int updFlag = this.dataService.updateConnect(connect);
             if (updFlag == 1) {
                 return getOkByJson("修改连接成功");
@@ -132,7 +132,7 @@ public class ConnectController {
             if ("1".equals(connect.getType())) {
                 JschUtil.openSSH(connect);
             }
-            if (connect.getIsha().equals("0")) {
+            if (connect.getMode().equals("0")) {
                 Jedis jedis = RedisUtil.openJedis(connect);
                 if (null != jedis) {
                     //关闭原来连接
@@ -185,7 +185,7 @@ public class ConnectController {
     public String disconConnect(String id) {
         try {
             Connect connect = getCurrentOpenConnect();
-            if (connect.getIsha().equals("0")) {
+            if (connect.getMode().equals("0")) {
                 Jedis jedis = RedisUtil.openJedis(connect);
                 if (null != jedis) {
                     RedisUtil.closeJedis(jedis);
@@ -213,7 +213,7 @@ public class ConnectController {
             if (!StringUtils.isEmpty(id) && !connect.getId().equals(id)) {
                 return 0;
             }
-            if (connect.getIsha().equals("0")) {
+            if (connect.getMode().equals("0")) {
                 Jedis jedis = getCurrentJedisObject();
                 if (null != jedis) {
                     return 1;
